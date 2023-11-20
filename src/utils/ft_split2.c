@@ -6,7 +6,7 @@
 /*   By: gipaul <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:14:31 by gipaul            #+#    #+#             */
-/*   Updated: 2023/11/13 16:14:32 by gipaul           ###   ########.fr       */
+/*   Updated: 2023/11/17 16:18:17 by gipaul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,9 @@ char	**ft_split2(char *str, char *set)
 	word = ft_count_words(str, set);
 	tab = malloc(sizeof(char *) * (word + 1));
 	if (!tab)
+	{
 		ft_error(2);
+		return (NULL);
+	}
 	return (ft_creat_tab(tab, str, set, word));
 }

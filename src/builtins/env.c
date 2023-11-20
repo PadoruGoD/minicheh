@@ -6,7 +6,7 @@
 /*   By: gipaul <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:03:25 by gipaul            #+#    #+#             */
-/*   Updated: 2023/11/13 16:03:29 by gipaul           ###   ########.fr       */
+/*   Updated: 2023/11/20 18:06:24 by gipaul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,8 @@ int	my_setenv(char *var)
 	char		*name;
 
 	name = ft_substr(var, 0, egal_len(var));
+	if (!name)
+		ft_error(2);
 	if (var[egal_len(var)] == '=')
 		value = ft_substr(var, egal_len(var) + 1, ft_strlen(var));
 	else
@@ -111,6 +113,7 @@ int	my_setenv(char *var)
 	else
 		dont_exist(&offset);
 	end_setenv(c, name, value, &offset);
+	free(value);
 	return (0);
 }
 
@@ -127,6 +130,8 @@ char	*my_getenv(char *name, int *index)
 		while (g_data->env[i][j] && g_data->env[i][j] != '=')
 			j++;
 		sub = ft_substr(g_data->env[i], 0, j);
+		if (!sub)
+			ft_error(2);
 		if (ft_strcmp(sub, name) == 0)
 		{
 			free(sub);
