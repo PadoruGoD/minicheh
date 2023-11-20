@@ -6,7 +6,7 @@
 /*   By: gipaul <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:57:24 by gipaul            #+#    #+#             */
-/*   Updated: 2023/11/15 16:29:35 by gipaul           ###   ########.fr       */
+/*   Updated: 2023/11/20 18:22:07 by gipaul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -243,7 +243,6 @@ char		*ft_lstmerge(t_list *lst);
 char		*ft_woquote(char *line);
 char		*ft_replace(char *str, char *search, char *replace);
 
-void		ft_error(int e);
 int			ft_free(char *line);
 void		ft_free_tab(char **tab);
 
