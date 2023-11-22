@@ -6,7 +6,7 @@
 /*   By: gipaul <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:26:43 by gipaul            #+#    #+#             */
-/*   Updated: 2023/11/22 17:00:16 by gipaul           ###   ########.fr       */
+/*   Updated: 2023/11/22 17:20:44 by gipaul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,13 @@ static char	**ft_to_create_tab(char **tab, const char *s, char *set)
 			tmp = ft_word_dup(s, start, i);
 			tab[count] = tmp;
 			if (!tab[count] || !++count)
+			{
 				ft_error(2);
+			}
 			start = -1;
 		}
 		i++;
 	}
-	free(tmp);
 	tab[count] = NULL;
 	return (tab);
 }
