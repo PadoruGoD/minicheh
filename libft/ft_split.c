@@ -6,7 +6,7 @@
 /*   By: gipaul <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:26:43 by gipaul            #+#    #+#             */
-/*   Updated: 2023/11/22 16:07:46 by gipaul           ###   ########.fr       */
+/*   Updated: 2023/11/22 17:00:16 by gipaul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ static char	**ft_to_create_tab(char **tab, const char *s, char *set)
 	int		count;
 	int		i;
 	int		start;
+	char 	*tmp;
 
 	i = 0;
 	count = 0;
@@ -64,13 +65,15 @@ static char	**ft_to_create_tab(char **tab, const char *s, char *set)
 			start = i;
 		else if ((ft_strchr(set, s[i]) || i == (int)ft_strlen(s)) && start >= 0)
 		{
-			tab[count] = ft_word_dup(s, start, i);
+			tmp = ft_word_dup(s, start, i);
+			tab[count] = tmp;
 			if (!tab[count] || !++count)
 				ft_error(2);
 			start = -1;
 		}
 		i++;
 	}
+	free(tmp);
 	tab[count] = NULL;
 	return (tab);
 }

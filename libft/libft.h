@@ -6,7 +6,7 @@
 /*   By: gipaul <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:31:39 by gipaul            #+#    #+#             */
-/*   Updated: 2023/11/22 15:47:45 by gipaul           ###   ########.fr       */
+/*   Updated: 2023/11/22 16:18:22 by gipaul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 char	*ft_strdup(const char *s1);
 void	*ft_calloc(size_t count, size_t size);
+void	ft_free_tab(char **tab);
 
 // partie 2
 
