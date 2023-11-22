@@ -6,7 +6,7 @@
 /*   By: gipaul <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:03:55 by gipaul            #+#    #+#             */
-/*   Updated: 2023/11/20 18:10:54 by gipaul           ###   ########.fr       */
+/*   Updated: 2023/11/21 19:23:40 by gipaul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,30 +38,30 @@ int	checkvalid_unset(char *cmd)
 int	del_element(char *name)
 {
 	char	**p_env;
-	char	**p_env2;
+	int		i;
 
 	p_env = g_data->env;
-	while (*p_env)
+	i = -1;
+	while (p_env[++i])
 	{
-		if (ft_strncmp(*p_env, name, ft_strlen(name) - 1) == 0)
+		if (ft_strncmp(p_env[i], name, ft_strlen(name) - 1) == 0)
 		{
-			p_env2 = p_env;
-			while (*p_env2)
-			{
-				*p_env2 = *(p_env2 + 1);
-				p_env2++;
-			}
+			free(p_env[i]);
+			break ;
 		}
-		p_env++;
 	}
+	while (p_env[++i])
+		p_env[i - 1] = p_env[i];
+	p_env[i - 1] = NULL;
 	free(name);
 	return (0);
 }
 
 int	unset(char **cmd)
 {
-	int	i;
-	int	err;
+	int		i;
+	int		err;
+	char	*tmp;
 
 	i = 1;
 	if (!cmd[1])
@@ -71,7 +71,8 @@ int	unset(char **cmd)
 		err = checkvalid_unset(cmd[i]);
 		if (err != 0)
 			return (err);
-		del_element(ft_ecrase_q(cmd[i]));
+		tmp = ft_ecrase_q(cmd[i]);
+		del_element(tmp);
 		i++;
 	}
 	return (0);

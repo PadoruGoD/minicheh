@@ -6,7 +6,7 @@
 /*   By: gipaul <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:02:47 by gipaul            #+#    #+#             */
-/*   Updated: 2023/11/20 17:25:31 by gipaul           ###   ########.fr       */
+/*   Updated: 2023/11/21 16:16:04 by gipaul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,19 +61,22 @@ int	goto_dir(void)
 int	cd(char *cmd)
 {
 	char	**s_cmd;
+	char	*path;
 	int		ret;
 
 	ret = 0;
 	s_cmd = ft_split2(cmd, " ");
 	if (!s_cmd[1])
 		return (cd_2());
-	if (chdir(ft_ecrase_q(s_cmd[1])) == -1)
+	path = ft_ecrase_q(s_cmd[1]);
+	if (chdir(path) == -1)
 	{
 		perror("cd");
 		return (1);
 	}
 	else
 		ret = goto_dir();
+	free(path);
 	ft_free_tab(s_cmd);
 	return (ret);
 }

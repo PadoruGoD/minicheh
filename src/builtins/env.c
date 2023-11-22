@@ -6,7 +6,7 @@
 /*   By: gipaul <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:03:25 by gipaul            #+#    #+#             */
-/*   Updated: 2023/11/20 18:06:24 by gipaul           ###   ########.fr       */
+/*   Updated: 2023/11/21 16:15:59 by gipaul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	end_setenv(char *c, char *name, char *value, int *offset)
 	c = (char *)name;
 	while (*c && *c != '=')
 		++c;
+	free((g_data->env)[*offset]);
 	(g_data->env)[*offset] = malloc((size_t)((int)(c - name) \
 		+ ft_strlen(value) + 2));
 	if (!((g_data->env)[*offset]))

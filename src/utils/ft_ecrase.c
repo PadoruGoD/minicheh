@@ -6,7 +6,7 @@
 /*   By: gipaul <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:12:49 by gipaul            #+#    #+#             */
-/*   Updated: 2023/11/20 17:50:55 by gipaul           ###   ########.fr       */
+/*   Updated: 2023/11/21 19:07:16 by gipaul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_ecrase_q2(char *word, t_tmp *tmp)
 {
+	char	*temp;
+
 	tmp->c = 0;
 	tmp->start = tmp->end;
 	if (word[tmp->end] && ft_strchr("\'\"", word[tmp->end]))
@@ -22,8 +24,8 @@ void	ft_ecrase_q2(char *word, t_tmp *tmp)
 		tmp->start = tmp->end;
 		while (word[tmp->end] && word[tmp->end] != tmp->c)
 			tmp->end++;
-		tmp->str = ft_strjoin3(tmp->str, ft_substr(word, tmp->start,
-					tmp->end - tmp->start));
+		temp = ft_substr(word, tmp->start, tmp->end - tmp->start);
+		tmp->str = ft_strjoin3(tmp->str, temp);
 		if (word[tmp->end])
 			tmp->end++;
 	}
@@ -31,8 +33,8 @@ void	ft_ecrase_q2(char *word, t_tmp *tmp)
 	{
 		while (word[tmp->end] && !ft_strchr("\'\"", word[tmp->end]))
 			tmp->end++;
-		tmp->str = ft_strjoin3(tmp->str, ft_substr(word,
-					tmp->start, tmp->end - tmp->start));
+		temp = ft_substr(word, tmp->start, tmp->end - tmp->start);
+		tmp->str = ft_strjoin3(tmp->str, temp);
 	}
 }
 

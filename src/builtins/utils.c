@@ -6,7 +6,7 @@
 /*   By: gipaul <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:04:06 by gipaul            #+#    #+#             */
-/*   Updated: 2023/11/20 18:14:16 by gipaul           ###   ########.fr       */
+/*   Updated: 2023/11/21 19:36:35 by gipaul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,10 @@ void	format_env(char *var)
 
 	sub = ft_substr(var, 0, egal_len(var));
 	if (!ft_strcmp(sub, "_"))
+	{
+		free(sub);
 		return ;
+	}
 	printf("declare -x %s", sub);
 	if (var[egal_len(var)] == '=')
 	{

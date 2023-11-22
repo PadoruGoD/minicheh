@@ -6,7 +6,7 @@
 /*   By: gipaul <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:03:47 by gipaul            #+#    #+#             */
-/*   Updated: 2023/11/20 16:11:49 by gipaul           ###   ########.fr       */
+/*   Updated: 2023/11/21 19:39:51 by gipaul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	export_print(void)
 			format_env(env[i]);
 		i++;
 	}
+	ft_free_tab(env);
 }
 
 int	export(char **cmd)
@@ -83,8 +84,12 @@ int	export(char **cmd)
 	{
 		if (cmd[i][0] == '_' && cmd[i][1] == '=')
 			return (0);
-		if (!checkvalid(ft_ecrase_q(cmd[i])))
+		tmp = ft_ecrase_q(cmd[i]);
+		if (!checkvalid(tmp))
+		{
+			free(tmp);
 			return (1);
+		}
 		tmp = ft_ecrase_q(cmd[i]);
 		my_setenv(tmp);
 		free(tmp);
