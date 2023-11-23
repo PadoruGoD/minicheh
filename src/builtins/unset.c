@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gipaul <marvin@42lausanne.ch>              +#+  +:+       +#+        */
+/*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:03:55 by gipaul            #+#    #+#             */
-/*   Updated: 2023/11/21 19:23:40 by gipaul           ###   ########.fr       */
+/*   Updated: 2023/11/23 16:31:11 by ndiamant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,11 @@ int	del_element(char *name)
 	int		i;
 
 	p_env = g_data->env;
+	int h = -1;
+	while (g_data->env[++h])
+	{
+		printf("env : %s\n", g_data->env[h]);
+	}
 	i = -1;
 	while (p_env[++i])
 	{

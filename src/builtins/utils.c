@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gipaul <marvin@42lausanne.ch>              +#+  +:+       +#+        */
+/*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:04:06 by gipaul            #+#    #+#             */
-/*   Updated: 2023/11/23 15:49:02 by gipaul           ###   ########.fr       */
+/*   Updated: 2023/11/23 16:36:00 by ndiamant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,14 @@ void	*ft_realloc(void *ptr, size_t size)
 int	print_env(char **env)
 {
 	int	i;
+	(void) env;
 
 	i = 0;
-	while (env[i])
+	while (g_data->env[i])
 	{
-		if (env[i][egal_len(env[i]) + 1])
+		if (g_data->env[i][egal_len(g_data->env[i]) + 1])
 		{
-			ft_putstr_fd(env[i], 1);
+			ft_putstr_fd(g_data->env[i], 1);
 			ft_putstr_fd("\n", 1);
 		}
 		i++;

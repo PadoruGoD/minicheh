@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gipaul <marvin@42lausanne.ch>              +#+  +:+       +#+        */
+/*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:03:47 by gipaul            #+#    #+#             */
-/*   Updated: 2023/11/23 15:48:04 by gipaul           ###   ########.fr       */
+/*   Updated: 2023/11/23 16:38:27 by ndiamant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	export_print(void)
 			format_env(env[i]);
 		i++;
 	}
-	ft_free_tab(env);
+	ft_free_tab(g_data->env);
 }
 
 int	export(char **cmd)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gipaul <marvin@42lausanne.ch>              +#+  +:+       +#+        */
+/*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:01:54 by gipaul            #+#    #+#             */
-/*   Updated: 2023/11/23 15:02:59 by gipaul           ###   ########.fr       */
+/*   Updated: 2023/11/23 16:31:21 by ndiamant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void	main_2(void)
 int	main(int ac, char **av, char **env)
 {
 	(void) av;
-	sleep(10);
+	//sleep(10);
 	if (ac != 1)
 	{
 		puterror("\e[0;37mUse", "./minishell without arguments");
