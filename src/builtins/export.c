@@ -6,7 +6,7 @@
 /*   By: gipaul <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:03:47 by gipaul            #+#    #+#             */
-/*   Updated: 2023/11/21 19:39:51 by gipaul           ###   ########.fr       */
+/*   Updated: 2023/11/23 15:48:04 by gipaul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ int	export(char **cmd)
 			free(tmp);
 			return (1);
 		}
+		free(tmp);
 		tmp = ft_ecrase_q(cmd[i]);
 		my_setenv(tmp);
 		free(tmp);

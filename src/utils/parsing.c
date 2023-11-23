@@ -6,7 +6,7 @@
 /*   By: gipaul <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:15:50 by gipaul            #+#    #+#             */
-/*   Updated: 2023/11/22 15:57:02 by gipaul           ###   ########.fr       */
+/*   Updated: 2023/11/23 15:58:56 by gipaul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_token	*ft_parsing2(t_token *sup_token)
 	char	*line;
 
 	line = tokenize(ft_ecrase_p(sup_token->cmd));
-	tab = ft_split(line, "\1");
+	tab = ft_split(line, "=");
 	free(line);
 	token = ft_tab_to_token2(tab, sup_token);
 	tmp = token;
@@ -42,7 +42,7 @@ t_token	*ft_parsing(char *line)
 	t_token	*tmp;
 
 	line = tokenize(line);
-	tab = ft_split(line, "\1");
+	tab = ft_split(line, "=");
 	token = ft_tab_to_token(tab);
 	tmp = token;
 	while (tmp)
