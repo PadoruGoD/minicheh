@@ -42,6 +42,7 @@ int	pipex(char *cmd)
 int	subshell(char *line)
 {
 	t_token	*token;
+	t_data	**envglo;
 
 	line = ft_ecrase_p(line);
 	if (ft_isprohibited(line) == 1)
@@ -54,7 +55,7 @@ int	subshell(char *line)
 	free(line);
 	execute(token);
 	ft_tokenclean_all(&token);
-	return (g_data->lastret);
+	return (envglo->lastret);
 }
 
 char	*access_path(char **allpath, char **s_cmd, char *cmd)

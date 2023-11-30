@@ -14,8 +14,10 @@
 
 void	execute_3(int *is_and, t_token *tmp)
 {
+	t_data	**envglo;
+
 	*is_and = 0;
-	if (g_data->is_pipe == 0 && tmp->next
+	if (envglo->is_pipe == 0 && tmp->next
 		&& what_im(tmp->next->cmd) == 3 && tmp->redirect.outfd == 1)
 		redirect_exec(tmp, 1);
 	else
@@ -24,8 +26,10 @@ void	execute_3(int *is_and, t_token *tmp)
 
 void	execute_4(int *is_or, t_token *tmp)
 {
+	t_data	**envglo;
+
 	*is_or = 0;
-	if (g_data->is_pipe == 0 && tmp->next
+	if (envglo->is_pipe == 0 && tmp->next
 		&& what_im(tmp->next->cmd) == 3 && tmp->redirect.outfd == 1)
 		redirect_exec(tmp, 1);
 	else
@@ -42,11 +46,13 @@ void	execute_5(int *is_and, int *is_or, int start, t_token *tmp)
 
 void	execute_2(int *is_or, int *is_and, t_token *tmp, int start)
 {
-	if (*is_and == 1 && g_data->lastret == 0)
+	t_data	**envglo;
+
+	if (*is_and == 1 && envglo->lastret == 0)
 		execute_3(is_and, tmp);
-	else if (*is_or == 1 && g_data->lastret != 0)
+	else if (*is_or == 1 && envglo->lastret != 0)
 		execute_4(is_or, tmp);
-	else if (start == 1 && g_data->is_pipe == 0 && tmp->next
+	else if (start == 1 && envglo->is_pipe == 0 && tmp->next
 		&& what_im(tmp->next->cmd) == 3 && tmp->redirect.outfd == 1)
 		redirect_exec(tmp, 1);
 	else if (start == 1)
@@ -60,10 +66,11 @@ void	execute(t_token *token)
 	int		is_and;
 	int		is_or;
 	int		is_ope;
+	t_data	**envglo;
 
 	tmp = token;
 	init(&start, &is_and, &is_or, &is_ope);
-	while (tmp && g_data->hd_stop == 0)
+	while (tmp && envglo->hd_stop == 0)
 	{
 		init_2(tmp);
 		if (ft_strlen(tmp->cmd) == 0)

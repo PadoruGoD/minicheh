@@ -33,33 +33,37 @@ int	what_im(char *input)
 
 void	redirect_exec(t_token *token, int mode)
 {
-	g_data->stdin_reset = dup(0);
-	g_data->stdout_reset = dup(1);
+	t_data	**envglo;
+
+	envglo->stdin_reset = dup(0);
+	envglo->stdout_reset = dup(1);
 	if (token->redirect.outfd != -1 || token->redirect.infd != -1)
 	{
 		dup2(token->redirect.infd, 0);
 		dup2(token->redirect.outfd, 1);
 	}
 	else
-		g_data->lastret = 1;
+		envglo->lastret = 1;
 	if (mode == 0 && token->redirect.outfd != -1 && token->redirect.infd != -1)
-		g_data->lastret = exec(token->cmd);
+		envglo->lastret = exec(token->cmd);
 	else
 	{
-		g_data->is_pipe = 1;
-		g_data->lastret = exec_pipe(token);
+		envglo->is_pipe = 1;
+		envglo->lastret = exec_pipe(token);
 	}
-	dup2(g_data->stdin_reset, 0);
-	dup2(g_data->stdout_reset, 1);
+	dup2(envglo->stdin_reset, 0);
+	dup2(envglo->stdout_reset, 1);
 }
 
 void	init(int *start, int *is_and, int *is_or, int *is_ope)
 {
+	t_data	**envglo;
+
 	*start = 1;
 	*is_and = 0;
 	*is_or = 0;
 	*is_ope = 1;
-	g_data->is_pipe = 0;
+	envglo->is_pipe = 0;
 }
 
 void	init_2(t_token *tmp)

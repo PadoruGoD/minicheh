@@ -15,16 +15,17 @@
 int	pipe_ope(t_token *tmp)
 {
 	int	ret;
+	t_data	**envglo;
 
 	ret = 1;
-	while (g_data->is_pipe && tmp->cmd)
+	while (envglo->is_pipe && tmp->cmd)
 	{
 		init_2(tmp);
-		if (g_data->is_pipe && tmp->next && what_im(tmp->next->cmd) == 3)
+		if (envglo->is_pipe && tmp->next && what_im(tmp->next->cmd) == 3)
 			ret = pipex(tmp->cmd);
-		else if (g_data->is_pipe == 1 && what_im(tmp->cmd) == 0)
+		else if (envglo->is_pipe == 1 && what_im(tmp->cmd) == 0)
 		{
-			g_data->is_pipe = 0;
+			envglo->is_pipe = 0;
 			if (tmp->redirect.outfd == -1 || tmp->redirect.infd == -1)
 				return (1);
 			dup2(tmp->redirect.infd, 0);

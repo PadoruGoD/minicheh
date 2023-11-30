@@ -14,6 +14,8 @@
 
 int	lexer(char **s_cmd, char *cmd)
 {
+	t_data	**envglo;
+
 	if (cmd[0] == '(')
 		return (subshell(cmd));
 	else if (ft_strcmp(s_cmd[0], "echo") == 0)
@@ -23,7 +25,7 @@ int	lexer(char **s_cmd, char *cmd)
 	else if (ft_strcmp(s_cmd[0], "pwd") == 0)
 		return (pwd());
 	else if (ft_strcmp(s_cmd[0], "env") == 0)
-		return (print_env(g_data->env));
+		return (print_env(envglo->env));
 	else if (ft_strcmp(s_cmd[0], "export") == 0)
 		return (export(s_cmd));
 	else if (ft_strcmp(s_cmd[0], "unset") == 0)
@@ -72,10 +74,11 @@ void	file_check(char *cmd, char *tmp)
 void	not_pid(char *cmd, char **args)
 {
 	char	*tmp;
+	t_data	**envglo;
 
 	signal(SIGINT, c_handler_fork);
 	signal(SIGQUIT, q_handler_fork);
-	if (execve(get_path(cmd), &args[0], g_data->env) == -1)
+	if (execve(get_path(cmd), &args[0], envglo->env) == -1)
 	{
 		tmp = ft_ecrase_q(args[0]);
 		file_check(cmd, tmp);

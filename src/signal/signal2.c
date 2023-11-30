@@ -15,7 +15,7 @@
 void	here_doc_sig1(int sig)
 {
 	(void)sig;
-	g_data->hd_stop = 1;
+	g_data->hd_stop = 1; //variable global ici
 }
 
 void	here_doc_sig2(int sig)
