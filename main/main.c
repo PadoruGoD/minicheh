@@ -40,24 +40,26 @@ void	shlvlhandler(char *lvl, char *join2)
 	free(join2);
 }
 
-void	initiate_values(t_data *g_data, char **env)
+void	initiate_values(t_data *envglo, char **env)
 {
-	g_data->lastret = 0;
-	g_data->env = env;
-	g_data->env = array_dup();
-	g_data->hd = 0;
+	envglo->lastret = 0;
+	envglo->env = env;
+	envglo->env = array_dup();
+	envglo->hd = 0;
 	shlvlhandler(NULL, NULL);
-	tcgetattr(0, &g_data->old);
-	tcgetattr(0, &g_data->new);
-	g_data->new.c_lflag &= ~(ECHOCTL);
-	tcsetattr(0, TCSANOW, &g_data->new);
+	tcgetattr(0, &envglo->old);
+	tcgetattr(0, &envglo->new);
+	envglo->new.c_lflag &= ~(ECHOCTL);
+	tcsetattr(0, TCSANOW, &envglo->new);
 	signal(SIGINT, c_handler);
 	signal(SIGQUIT, SIG_IGN);
 }
 
 int	main_3(char **line, char *pt)
 {
-	g_data->hd_stop = 0;
+	t_data	*envglo;
+
+	envglo->hd_stop = 0;
 	pt = prompt();
 	*line = readline(pt);
 	free(pt);
@@ -105,6 +107,7 @@ void	main_2(void)
 
 int	main(int ac, char **av, char **env)
 {
+	t_data	*envglo;
 	(void) av;
 	//sleep(10);
 	if (ac != 1)
@@ -112,10 +115,10 @@ int	main(int ac, char **av, char **env)
 		puterror("\e[0;37mUse", "./minishell without arguments");
 		return (0);
 	}
-	g_data = malloc(sizeof(t_data));
-	if (!(g_data))
+	envglo = malloc(sizeof(t_data));
+	if (!(envglo))
 		return (0);
-	initiate_values(g_data, env);
+	initiate_values(envglo, env);
 	main_2();
-	ft_exit(g_data->lastret);
+	ft_exit(envglo->lastret);
 }

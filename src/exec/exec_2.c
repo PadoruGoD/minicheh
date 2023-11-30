@@ -42,7 +42,7 @@ int	pipex(char *cmd)
 int	subshell(char *line)
 {
 	t_token	*token;
-	t_data	**envglo;
+	t_data	*envglo;
 
 	line = ft_ecrase_p(line);
 	if (ft_isprohibited(line) == 1)

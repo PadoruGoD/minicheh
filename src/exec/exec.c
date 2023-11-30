@@ -14,7 +14,7 @@
 
 int	lexer(char **s_cmd, char *cmd)
 {
-	t_data	**envglo;
+	t_data	*envglo;
 
 	if (cmd[0] == '(')
 		return (subshell(cmd));
@@ -74,7 +74,7 @@ void	file_check(char *cmd, char *tmp)
 void	not_pid(char *cmd, char **args)
 {
 	char	*tmp;
-	t_data	**envglo;
+	t_data	*envglo;
 
 	signal(SIGINT, c_handler_fork);
 	signal(SIGQUIT, q_handler_fork);

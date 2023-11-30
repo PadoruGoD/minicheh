@@ -15,7 +15,7 @@
 int	pipe_ope(t_token *tmp)
 {
 	int	ret;
-	t_data	**envglo;
+	t_data	*envglo;
 
 	ret = 1;
 	while (envglo->is_pipe && tmp->cmd)

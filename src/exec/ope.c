@@ -33,7 +33,7 @@ int	what_im(char *input)
 
 void	redirect_exec(t_token *token, int mode)
 {
-	t_data	**envglo;
+	t_data	*envglo;
 
 	envglo->stdin_reset = dup(0);
 	envglo->stdout_reset = dup(1);
@@ -57,7 +57,7 @@ void	redirect_exec(t_token *token, int mode)
 
 void	init(int *start, int *is_and, int *is_or, int *is_ope)
 {
-	t_data	**envglo;
+	t_data	*envglo;
 
 	*start = 1;
 	*is_and = 0;

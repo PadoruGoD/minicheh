@@ -14,7 +14,7 @@
 
 void	execute_3(int *is_and, t_token *tmp)
 {
-	t_data	**envglo;
+	t_data	*envglo;
 
 	*is_and = 0;
 	if (envglo->is_pipe == 0 && tmp->next
@@ -26,7 +26,7 @@ void	execute_3(int *is_and, t_token *tmp)
 
 void	execute_4(int *is_or, t_token *tmp)
 {
-	t_data	**envglo;
+	t_data	*envglo;
 
 	*is_or = 0;
 	if (envglo->is_pipe == 0 && tmp->next
@@ -46,7 +46,7 @@ void	execute_5(int *is_and, int *is_or, int start, t_token *tmp)
 
 void	execute_2(int *is_or, int *is_and, t_token *tmp, int start)
 {
-	t_data	**envglo;
+	t_data	*envglo;
 
 	if (*is_and == 1 && envglo->lastret == 0)
 		execute_3(is_and, tmp);
@@ -66,7 +66,7 @@ void	execute(t_token *token)
 	int		is_and;
 	int		is_or;
 	int		is_ope;
-	t_data	**envglo;
+	t_data	*envglo;
 
 	tmp = token;
 	init(&start, &is_and, &is_or, &is_ope);
